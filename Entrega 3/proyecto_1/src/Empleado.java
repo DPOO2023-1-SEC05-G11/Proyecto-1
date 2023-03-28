@@ -8,6 +8,7 @@ public class Empleado extends Usuario
 		super(login, password);
 		this.cargo = cargo;
 	}
+	
 
 	public String getCargo() {
 		return cargo;
