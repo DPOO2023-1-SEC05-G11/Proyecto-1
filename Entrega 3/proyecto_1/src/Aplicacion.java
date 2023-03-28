@@ -1,3 +1,5 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,7 +45,7 @@ public class Aplicacion implements Loader
 		while (type == null)
 		{
 			type = input("Select type");
-			if (type == "Admin") 
+			if (type.equals("Admin")) 
 			{
 				System.out.println("Your user will be an Admin");
 			} else if (type == "Empleado")
@@ -60,7 +62,7 @@ public class Aplicacion implements Loader
 		String login = null;
 		while (login == null)
 		{
-			login = input("Choose a username:");
+			login = input("Choose a username");
 			if (databaseUsuarios.containsKey(login)) 
 			{
 				System.out.println("Username already exists.");
@@ -87,12 +89,8 @@ public class Aplicacion implements Loader
 	}
 	
 		
-	public boolean acceso()
+	public boolean acceso(String login, String password)
 	{
-		 System.out.println("Login");
-		 String login = input("Username");
-		 String password = input("Password");
-		 
 		 if (databaseUsuarios.containsKey(login) && databaseUsuarios.get(login) == password) {
 			 return true; // idea vaga de lo que hace
 		 } else { 
@@ -100,15 +98,57 @@ public class Aplicacion implements Loader
 		 
 	 }
 	
+	public Usuario encontrarUsuario(String login)
+	{
+		for (Usuario user : usuarios)
+		{
+			if (user.login == login)
+			{
+				return user;
+			}
+		}
+		return null;
+		
+	}
+	
 	public void ejecutarAplicacion()
 	{
-		 System.out.println("¡Bienvenido a su PMS!\n");
-		 
-		 mostrarOpcionesLogin();
-		 int opcion_seleccionada_login = Integer.parseInt(input("Por favor seleccione una opción"));
-		 
-		 boolean continuar = true;
-		 while (continuar && acceso())
+		
+		databaseUsuarios.put("00000", "00000");
+		
+		boolean acceso = false;
+		Usuario user = null;
+		
+		System.out.println("¡Bienvenido a su PMS!\n");
+		
+		while (!acceso)
+		{
+			mostrarOpcionesLogin();
+			 
+			int opcion_seleccionada_login = Integer.parseInt(input("Por favor seleccione una opción"));
+			if (opcion_seleccionada_login == 1) 
+			{
+					//Login
+				System.out.println("Login");
+				String login = input("Username");
+				String password = input("Password");
+				acceso = acceso(login, password);
+				if (acceso)
+				{
+					user = encontrarUsuario(login);
+				}
+			} else if (opcion_seleccionada_login == 2) 
+			{
+			 	//Crear cuenta
+				crearCuenta();
+			}
+		}
+		
+		
+		
+		boolean continuar = true;
+		
+		while (continuar)
 		 {
 			 try
 			 {
