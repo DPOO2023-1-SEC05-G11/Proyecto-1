@@ -1,5 +1,3 @@
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +10,7 @@ import java.util.ArrayList;
 
 public class Aplicacion implements Loader
 {
-	ArrayList<Usuario> Usuarios;
+	ArrayList<Usuario> usuarios;
 	HashMap<String, String> databaseUsuarios;
 	
 	/**
@@ -41,6 +39,7 @@ public class Aplicacion implements Loader
 	public void crearCuenta()
 	{
 		String type = null;
+		String cargo = null;
 		while (type == null)
 		{
 			type = input("Select type");
@@ -50,6 +49,7 @@ public class Aplicacion implements Loader
 			} else if (type == "Empleado")
 			{
 				System.out.println("Your user will be an Empleado");
+				cargo = input("Please select your role");
 			} else
 			{
 				System.out.println("Selected type not recognised.");
@@ -73,7 +73,10 @@ public class Aplicacion implements Loader
 		databaseUsuarios.put(login, password);
 		if (type == "Admin")
 		{
-			
+			usuarios.add(new Admin(login, password));
+		} else
+		{
+			usuarios.add(new Empleado(login, password, cargo));
 		}
 		
 		
@@ -90,10 +93,9 @@ public class Aplicacion implements Loader
 		 String login = input("Username");
 		 String password = input("Password");
 		 
-		 if (user.getLogin() == login && user.getPassword() == password) {
+		 if (databaseUsuarios.containsKey(login) && databaseUsuarios.get(login) == password) {
 			 return true; // idea vaga de lo que hace
-		 }
-		 else { 
+		 } else { 
 			 return false; }
 		 
 	 }
@@ -101,6 +103,10 @@ public class Aplicacion implements Loader
 	public void ejecutarAplicacion()
 	{
 		 System.out.println("¡Bienvenido a su PMS!\n");
+		 
+		 mostrarOpcionesLogin();
+		 int opcion_seleccionada_login = Integer.parseInt(input("Por favor seleccione una opción"));
+		 
 		 boolean continuar = true;
 		 while (continuar && acceso())
 		 {
@@ -193,6 +199,13 @@ public class Aplicacion implements Loader
 		System.out.println("6. Buscar tarifa");
 		System.out.println("7. Buscar en el menú");
 		System.out.println("8. Salir de la aplicación\n");
+	}
+	
+	public void mostrarOpcionesLogin()
+	{
+		System.out.println("\nLogin o crear cuenta.\n");
+		System.out.println("1. Login");
+		System.out.println("2. Crear cuenta");
 	}
 	
 	public static void main(String[] args)
