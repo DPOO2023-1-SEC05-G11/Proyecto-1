@@ -1,0 +1,7 @@
+1001;simplex;pequeño;1.0;true
+1002;simplex;pequeño;1.0;true
+1003;simplex;pequeño;1.0;true
+1028;simplex;pequeño;1.0;true
+1021;simplex;pequeño;1.0;true
+1001;simplex;pequeño;1.0;true
+512;doble;true,true,true,2;1.0;false
