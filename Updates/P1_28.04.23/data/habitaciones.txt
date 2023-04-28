@@ -1,0 +1,10 @@
+123;suite;true,true,false,3;1.0;false
+101;estandar;false;true;true;2;1.0;false
+102;doble;true;true;true;2;1.0;false
+103;estandar;false;true;true;2;1.0;false
+104;suite;true;true;true;2;1.0;false
+105;estandar;false;true;true;2;1.0;false
+106;estandar;true;true;false;2;1.0;false
+107;doble;true;true;true;2;1.0;false
+108;estandar;true;true;false;2;1.0;false
+109;doble;true;true;true;2;1.0;false
