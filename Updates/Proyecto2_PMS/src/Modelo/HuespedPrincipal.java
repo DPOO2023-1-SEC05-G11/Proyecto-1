@@ -4,9 +4,9 @@ public class HuespedPrincipal extends Huesped{
 	
 	private int idReserva;
 
-	public HuespedPrincipal(String nombre, String documento, String email, String telefono) {
+	public HuespedPrincipal(String nombre, String documento, String email, String telefono, int idReserva) {
 		super(nombre, documento, email, telefono);
-		// TODO Auto-generated constructor stub
+		this.idReserva = idReserva;
 	}
 	
 	public int getIdReserva()

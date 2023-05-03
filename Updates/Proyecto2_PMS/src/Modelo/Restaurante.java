@@ -4,9 +4,13 @@ import java.util.HashMap;
 
 public class Restaurante extends Servicio{
 	
-	public Restaurante(HashMap<String, Integer> map)
+	private Restaurante(HashMap<String, Integer> map)
 	{
 		super(map);
 	}
+	
+	//call getInstance(map) to use
+	
+
 
 }
