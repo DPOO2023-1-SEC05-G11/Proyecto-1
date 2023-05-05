@@ -1,0 +1,11 @@
+123;suite;true;true;false;3;1;1;1.0;false
+101;estandar;false;true;true;3;1;0;1.0;false
+102;doble;true;true;true;2;4;1;1.0;false
+103;estandar;false;true;true;3;1;0;1.0;false
+104;suite;true;true;true;3;1;1;1.0;false
+105;estandar;false;true;true;4;3;0;1.0;false
+106;estandar;true;true;false;4;0;0;1.0;false
+107;doble;true;true;true;4;2;0;1.0;false
+108;estandar;true;true;false;3;0;0;1.0;false
+109;doble;true;true;true;2;1;0;1.0;false
+110;doble;true;true;true;1;1;0;1.0;false
