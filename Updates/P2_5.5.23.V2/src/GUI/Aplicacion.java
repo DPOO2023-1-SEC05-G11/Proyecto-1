@@ -280,9 +280,18 @@ public class Aplicacion
 
 	private void actualizarHabs() {
 		File file = new File(input("Ingrese el path del nuevo archivo de habitaciones."));
-		habitaciones = LoaderSaver.updateHabitaciones(file);
-		LoaderSaver.salvarHabitaciones(habitaciones);
-		System.out.println("Las nuevas habitaciones se cargaron correctamente.");
+		try {
+	        if (file.exists()) {
+	            habitaciones = LoaderSaver.updateHabitaciones(file);
+	            LoaderSaver.salvarHabitaciones(habitaciones);
+	            System.out.println("Las nuevas habitaciones se cargaron correctamente.");
+	        } else {
+	            System.out.println("El archivo no existe. No se realizaron cambios en las habitaciones.");
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Error al cargar el archivo de habitaciones: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
 
 	private void anadirHabs() {
@@ -341,10 +350,19 @@ public class Aplicacion
 
 	private void cargarNuevoServicio() {
 		String nombre = input("Ingrese el nombre del nuevo servicio a agregar:");
-		File f = new File(input("Por favor ingrese el path al archivo con las informaciones del nuevo servicio:"));
-		servicios.put(nombre, new Servicio(LoaderSaver.updateServicio(f)));
-		salvarNuevoServicio(nombre);	
-		System.out.println("El nuevo servicio está avticada");
+		File f = new File(input("Por favor ingrese el path al archivo con las informaciones del nuevo servicio (con .txt):"));
+		try {
+	        if (f.exists()) {
+	            servicios.put(nombre, new Servicio(LoaderSaver.updateServicio(f)));
+	            salvarNuevoServicio(nombre);
+	            System.out.println("El nuevo servicio está activado.");
+	        } else {
+	            System.out.println("El archivo no existe. No se realizó la carga del nuevo servicio.");
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Error al cargar el archivo del nuevo servicio: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
 
 	private String addEmptyServicio() {
