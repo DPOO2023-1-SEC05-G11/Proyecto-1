@@ -1,0 +1,1 @@
+2023-05-08;5;johannes-1234567-joblal99-3224189922;1610,1509,1505;true;johannes-1234567-joblal99-3224189922,anders-3457834-tullebakken-92936,mikael-123-mmm-321;spa|false|anders-3457834-tullebakken-92936|1234567|grupo|30000,restaurante|true|mikael-123-mmm-321|1234567|individual|0
